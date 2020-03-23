@@ -57,7 +57,7 @@ def show_pokemon(request, pokemon_id):
         'title_jp': pokemon.title_jp,
         'img_url': request.build_absolute_uri(pokemon.images.url),
         'description': pokemon.description,
-        'entities': pokemon.pokemon_entity.all(),
+        'entities': pokemon.pokemon_entities.all(),
         }
         if pokemon.next_evolution:
             pokemon_characteristics['next_evolution'] = {
@@ -67,11 +67,11 @@ def show_pokemon(request, pokemon_id):
             }
         
         try:
-            previous_evolution = pokemon.previous_evolution.get()
+            previous_evolutions = pokemon.previous_evolutions.get()
             pokemon_characteristics['previous_evolution'] = {
-            "title_ru": previous_evolution.title,
-            "pokemon_id": previous_evolution.id,
-            "img_url": request.build_absolute_uri(previous_evolution.images.url)
+            "title_ru": previous_evolutions.title,
+            "pokemon_id": previous_evolutions.id,
+            "img_url": request.build_absolute_uri(previous_evolutions.images.url)
             }
         except Pokemon.DoesNotExist:
             pass

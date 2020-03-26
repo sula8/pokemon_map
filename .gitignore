@@ -1,6 +1,7 @@
 # Created by https://www.gitignore.io
 
 pokemons.json
+.idea
 
 ### OSX ###
 .DS_Store
